@@ -1,3 +1,51 @@
+---
+name: ai-image-generation-mcp-server
+version: 1.0.0
+description: AI图片生成MCP服务器 - 智能内容分析与批量图片生成
+author: shivy123
+license: MIT
+type: mcp-server
+main: dist/index.js
+protocol: stdio
+engines:
+  node: ">=18.0.0"
+tools:
+  - name: analyze-webpage-images
+    description: 分析网页HTML内容，自动识别图片需求
+  - name: analyze-article-images
+    description: 分析文章内容，生成智能配图建议
+  - name: generate-single-image
+    description: 使用ModelScope FLUX模型生成单张图片
+  - name: generate-webpage-images
+    description: 批量生成网页所需的所有图片
+  - name: generate-article-images
+    description: 批量生成文章配图
+  - name: validate-api-key
+    description: 验证ModelScope API密钥有效性
+resources:
+  - uri: templates://image-types
+    name: 图片类型模板
+    description: 提供各种图片类型的模板和尺寸建议
+  - uri: guide://usage
+    name: 使用指南
+    description: 详细的使用指南和最佳实践
+dependencies:
+  "@modelcontextprotocol/sdk": "^1.0.0"
+  axios: "^1.6.2"
+  cheerio: "^1.0.0-rc.12"
+  zod: "^3.22.4"
+keywords:
+  - mcp
+  - mcp-server
+  - ai
+  - image-generation
+  - modelscope
+  - flux
+  - web-development
+  - content-analysis
+  - batch-processing
+---
+
 # AI图片生成MCP服务器
 
 ## 📦 MCP服务器信息

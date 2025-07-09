@@ -1,0 +1,164 @@
+{
+  "name": "ai-image-generation-mcp-server",
+  "version": "1.0.0",
+  "description": "AI图片生成MCP服务器 - 智能内容分析与批量图片生成",
+  "author": "shivy123",
+  "homepage": "https://github.com/ShiXiangYu2/ai-image-generation-mcp-server",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShiXiangYu2/ai-image-generation-mcp-server.git"
+  },
+  "license": "MIT",
+  "type": "mcp-server",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "mcp": {
+    "protocol": "stdio",
+    "tools": [
+      {
+        "name": "analyze-webpage-images",
+        "description": "分析网页HTML内容，自动识别图片需求",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "htmlContent": {
+              "type": "string",
+              "description": "要分析的HTML内容"
+            },
+            "pageUrl": {
+              "type": "string",
+              "description": "页面URL（可选）"
+            }
+          },
+          "required": ["htmlContent"]
+        }
+      },
+      {
+        "name": "analyze-article-images",
+        "description": "分析文章内容，生成智能配图建议",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "articleText": {
+              "type": "string",
+              "description": "文章文本内容"
+            },
+            "title": {
+              "type": "string",
+              "description": "文章标题（可选）"
+            }
+          },
+          "required": ["articleText"]
+        }
+      },
+      {
+        "name": "generate-single-image",
+        "description": "使用ModelScope FLUX模型生成单张图片",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "string",
+              "description": "图片生成提示词"
+            },
+            "apiKey": {
+              "type": "string",
+              "description": "ModelScope API密钥"
+            }
+          },
+          "required": ["prompt", "apiKey"]
+        }
+      },
+      {
+        "name": "generate-webpage-images",
+        "description": "批量生成网页所需的所有图片",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "htmlContent": {
+              "type": "string",
+              "description": "网页HTML内容"
+            },
+            "apiKey": {
+              "type": "string",
+              "description": "ModelScope API密钥"
+            },
+            "pageUrl": {
+              "type": "string",
+              "description": "页面URL（可选）"
+            }
+          },
+          "required": ["htmlContent", "apiKey"]
+        }
+      },
+      {
+        "name": "generate-article-images",
+        "description": "批量生成文章配图",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "articleText": {
+              "type": "string",
+              "description": "文章文本内容"
+            },
+            "apiKey": {
+              "type": "string",
+              "description": "ModelScope API密钥"
+            },
+            "title": {
+              "type": "string",
+              "description": "文章标题（可选）"
+            }
+          },
+          "required": ["articleText", "apiKey"]
+        }
+      },
+      {
+        "name": "validate-api-key",
+        "description": "验证ModelScope API密钥有效性",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "apiKey": {
+              "type": "string",
+              "description": "要验证的ModelScope API密钥"
+            }
+          },
+          "required": ["apiKey"]
+        }
+      }
+    ],
+    "resources": [
+      {
+        "uri": "templates://image-types",
+        "name": "图片类型模板",
+        "description": "提供各种图片类型的模板和尺寸建议"
+      },
+      {
+        "uri": "guide://usage", 
+        "name": "使用指南",
+        "description": "详细的使用指南和最佳实践"
+      }
+    ]
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "axios": "^1.6.0"
+  },
+  "keywords": [
+    "mcp",
+    "ai",
+    "image-generation",
+    "modelscope",
+    "flux",
+    "typescript",
+    "node.js"
+  ]
+} 

@@ -1,61 +1,31 @@
 # AI图片生成MCP服务器
 
-## MCP服务器配置
+## 📦 MCP服务器信息
 
-```json
-{
-  "name": "ai-image-generation-mcp-server",
-  "version": "1.0.0",
-  "description": "AI图片生成MCP服务器 - 智能内容分析与批量图片生成",
-  "author": "shivy123",
-  "homepage": "https://github.com/ShiXiangYu2/ai-image-generation-mcp-server",
-  "license": "MIT",
-  "type": "mcp-server",
-  "main": "dist/index.js",
-  "capabilities": {
-    "tools": [
-      {
-        "name": "analyze-webpage-images",
-        "description": "分析网页HTML内容，识别图片需求"
-      },
-      {
-        "name": "analyze-article-images", 
-        "description": "分析文章内容，生成配图建议"
-      },
-      {
-        "name": "generate-single-image",
-        "description": "使用AI生成单张图片"
-      },
-      {
-        "name": "generate-webpage-images",
-        "description": "批量生成网页所需图片"
-      },
-      {
-        "name": "generate-article-images",
-        "description": "批量生成文章配图"
-      },
-      {
-        "name": "validate-api-key",
-        "description": "验证ModelScope API密钥"
-      }
-    ],
-    "resources": [
-      {
-        "uri": "templates://image-types",
-        "description": "图片类型模板和尺寸建议"
-      },
-      {
-        "uri": "guide://usage",
-        "description": "详细使用指南和最佳实践"
-      }
-    ]
-  },
-  "requirements": {
-    "node": ">=18.0.0",
-    "api": "ModelScope FLUX.1-dev"
-  }
-}
-```
+**服务器名称**: ai-image-generation-mcp-server  
+**版本**: 1.0.0  
+**描述**: AI图片生成MCP服务器 - 智能内容分析与批量图片生成  
+**类型**: MCP Server  
+**运行时**: Node.js 18+  
+**API依赖**: ModelScope FLUX.1-dev  
+
+### 🛠️ 支持的MCP工具
+
+| 工具名称 | 功能描述 |
+|---------|----------|
+| `analyze-webpage-images` | 分析网页HTML内容，自动识别图片需求 |
+| `analyze-article-images` | 分析文章内容，生成智能配图建议 |
+| `generate-single-image` | 使用ModelScope FLUX模型生成单张图片 |
+| `generate-webpage-images` | 批量生成网页所需的所有图片 |
+| `generate-article-images` | 批量生成文章配图 |
+| `validate-api-key` | 验证ModelScope API密钥有效性 |
+
+### 📚 MCP资源
+
+| 资源URI | 描述 |
+|---------|------|
+| `templates://image-types` | 提供各种图片类型的模板和尺寸建议 |
+| `guide://usage` | 详细的使用指南和最佳实践 |
 
 一个功能强大的Model Context Protocol (MCP) 服务器，集成ModelScope FLUX.1-dev模型，为网页开发和文章配图提供智能AI图片生成功能。
 
